@@ -1,0 +1,61 @@
+#!/bin/bash
+#usage: runvdbench 16 100rmax
+
+set -e
+set -x
+
+#if [[ $# -ne 2 ]]; then
+#  echo "Usage: $0 <number of containers> <vdbench parameter filename without .vdb>"
+#  exit 1
+#fi
+
+FSNAME=andy  # CHANGE this to reflect your 1 shared FlashBlade filesystem name
+NUM_OF_DATA_VIPS=1 #CHANGE this to reflect your FlashBlade system
+
+NETWORK=vdbench-net
+HOST=`hostname`
+NUM_CONTAINERS=$1
+VDB=$2
+
+echo "Parameters"
+echo "Number of containers to spawn: $NUM_CONTAINERS"
+#echo "vdbench parameter file to run: $VDB"
+
+#docker network inspect $NETWORK > /dev/null 2>&1 || \
+#    docker network create --subnet=10.10.0.0/16 $NETWORK
+
+docker run -itd --privileged=true --name=vdbench-01 --net=vdbench-net --hostname=vdbench-01 vdbench 
+docker network inspect $NETWORK > /dev/null 2>&1 || \
+#for I in `seq -w 01 $NUM_CONTAINERS`; do
+#CONTAINER_NAME=vdbench-$I
+#  echo "Creating container $CONTAINER_NAME"
+#  docker run -itd --privileged=true \
+#    --name=vdbench-$I \
+#    --net=$NETWORK \
+#    --hostname=vdbench-$I \
+#    vdbench /usr/sbin/xinetd -f /etc/xinetd.conf
+
+#  sleep 1
+
+#  LV_RANDOM=`/home/loul/dockerdir/vdbenchdir/getrandom 1 $NUM_OF_DATA_VIPS`
+
+#  DATA_VIP=10.62.64.2$LV_RANDOM  # CHANGE this to reflect your FlashBlade data vips
+#  DATA_VIP=10.21.152.168  # CHANGE this to reflect your FlashBlade data vips
+
+ # echo "Mounting filesystem in $HOST $CONTAINER_NAME $DATA_VIP"
+ # docker exec $CONTAINER_NAME mount -t nfs -o tcp,vers=3,nolock $DATA_VIP:/$FSNAME /tmp/ir
+#  docker exec $CONTAINER_NAME mkdir -p /tmp/ir/$HOST/$CONTAINER_NAME
+#  docker exec $CONTAINER_NAME chmod 777 /tmp/ir/$HOST/$CONTAINER_NAME
+#  docker exec $CONTAINER_NAME df -h
+
+#  docker exec $CONTAINER_NAME hostname
+#  docker exec  $CONTAINER_NAME /tmp/vdbenchtests/dovdb $VDB $HOST $CONTAINER_NAME
+#  docker exec --detach $CONTAINER_NAME /tmp/vdbenchtests/dovdb $VDB $HOST $CONTAINER_NAME
+
+  #docker exec --detach $CONTAINER_NAME /bin/bash -c "ls -laR /tmp/vdbenchtests > /tmp/ir/$HOST/$CONTAINER_NAME/zzz_vdbenchtests"
+  #docker exec --detach $CONTAINER_NAME /bin/bash -c "ls -laR /tmp/vdbench > /tmp/ir/$HOST/$CONTAINER_NAME/zzz_vdbench"
+  #docker exec --detach $CONTAINER_NAME /bin/bash -c "ls -laR /tmp/java > /tmp/ir/$HOST/$CONTAINER_NAME/zzz_java"
+  #docker exec --detach $CONTAINER_NAME /bin/bash -c "/tmp/java/bin/java -version 2> /tmp/ir/$HOST/$CONTAINER_NAME/zzz_java_version"
+  #docker exec --detach $CONTAINER_NAME /bin/bash -c "/tmp/vdbench/vdbver > /tmp/ir/$HOST/$CONTAINER_NAME/zzz_vdbench_version"
+
+done
