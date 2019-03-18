@@ -1,0 +1,12 @@
+---
+- hosts: all
+  tasks:
+   - name: Add the user user  with a bash shell, appending the group 'admins' 
+     user:
+       name: "{{ itemu.user }}"
+       password: "{{ itemu.password }}"
+       shell: /bin/bash
+       groups: wheel
+       append: yes
+     with_items:
+        - "{{ itemu }}"

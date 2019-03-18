@@ -1,0 +1,3 @@
+itemu:
+      user: aparsons
+      password: "{{ 'dragon22' | password_hash('sha512') }}"

@@ -1,0 +1,12 @@
+#
+###
+###     This playbook invokes plays to do the following
+###
+###     made by andy parsons 11/13/2018
+###     email aparsons@purestorage.com
+###
+###
+###     This playbook creates a user in the wheel group and adds your ssh key
+###
+ - include: u.yaml #creates a user and adds it to the wheel dir
+ - include: k.yaml #adds your ssh key to the local machine

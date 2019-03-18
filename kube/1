@@ -1,0 +1,8 @@
+---
+- hosts: all
+  sudo: yes
+  tasks:
+   - name: execute commands
+     shell: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+     name: install ce
+     shell: yum install -y docker-ce

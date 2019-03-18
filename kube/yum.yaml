@@ -1,0 +1,18 @@
+---
+- hosts: all
+  sudo: yes
+  tasks:
+      - name: install yum packages
+        yum:
+          name: vim
+          state: latest
+          name: nfs-utils
+          state: latest
+          name: net-tools
+          state: latest
+          name: yum-utils
+          state: latest
+          name: device-mapper-persistent-data
+          state: latest
+          name: lvm2
+          state: latest
