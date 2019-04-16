@@ -1,0 +1,11 @@
+[masters]
+master ansible_host=10.226.224.238 ansible_user=aparsons
+
+[workers]
+worker1 ansible_host=10.226.224.237 ansible_user=aparsons
+worker2 ansible_host=10.226.224.236 ansible_user=aparsons
+
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3
+ansible_user=aparsons
+ansible_ssh_pass=pureuser

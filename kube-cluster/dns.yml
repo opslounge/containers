@@ -1,0 +1,10 @@
+- hosts: all
+  become: yes
+  tasks:
+     - nmcli:
+          conn_name: ens192
+          type: ethernet
+          dns4:
+            - 10.226.224.7
+          state: present
+

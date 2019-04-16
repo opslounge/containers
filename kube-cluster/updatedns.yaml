@@ -1,0 +1,10 @@
+- hosts: all
+  become: yes
+  tasks:
+    - name: setup resolv.conf in DMZ9 for Ubuntu 16.04 hosts
+      when: ansible_default_ipv4.address is match("10.226.224")
+      when: ansible_distribution_release is match ("xenial")
+      interfaces_file:
+        iface: "{{ ansible_default_ipv4['interface'] }}" 
+        option: dns-nameservers
+        value: 10.226.224.7

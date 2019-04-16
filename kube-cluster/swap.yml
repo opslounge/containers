@@ -1,0 +1,5 @@
+- hosts: all
+  become: yes
+  tasks:
+    - name: turn off swapoff
+      shell: swapoff -a
