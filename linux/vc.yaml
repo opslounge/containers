@@ -1,0 +1,19 @@
+---
+- hosts: compute
+  become: yes
+  tasks:
+
+    - name: partition new disk
+      shell: echo -e "n\np\n1\n\n\nw" | sudo fdisk /dev/sdb
+      args:
+        executable: /bin/bash
+
+    - filesystem:
+        fstype: ext2
+        dev: /dev/sdb1
+    
+    - mount:
+        fstype: ext2
+        src: /dev/sdb1
+        path: /demo
+        state: mounted
