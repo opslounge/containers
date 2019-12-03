@@ -1,0 +1,5 @@
+hname,address,gate,vlan,status,frc,temp,infstate,nic
+windowsserver2019build,10.226.224.234,10.226.224.1,mgmt,poweredon,yes,server2019template,present,True
+centos7build,10.226.224.233,10.226.224.1,mgmt,poweredon,yes,apcent7template,present,True
+ubuntu1604build,10.226.224.238,10.226.224.1,mgmt,poweredon,yes,apubuntu1604,present,True
+windowsserver2016build,10.226.224.100,10.226.224.1,mgmt,poweredon,yes,windows2016_template,present
