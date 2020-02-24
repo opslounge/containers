@@ -1,0 +1,16 @@
+- name: Now reconnecting host to host groups
+  hosts: reddotac2
+  gather_facts: no
+  connection: local
+  tasks:
+#    - pause: 
+ #       prompt: playbook will now reconnect hosts to primary storage
+    - name: Connecting host with host group
+      purefa_hg:
+        hostgroup: ProdESXGroup
+        volume: 
+          - z-parsons::z-vdbench01
+        state: present
+        fa_url: 10.226.224.132
+        api_token: 84f1db69-0d00-79fe-40ef-54088761e28e
+      #  api_token: a2bc1b63-a4eb-35dd-846f-017d26dcd531

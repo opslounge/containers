@@ -1,0 +1,41 @@
+- hosts: compute
+  become: yes
+  tasks:
+   - name: install wget
+     yum:
+       name: wget
+       state: present
+
+   - name: install git
+     yum:
+       name: git
+       state: present
+
+   - name: net-tools
+     yum:
+       name: net-tools
+       state: present
+
+   - name: bind-utils
+     yum:
+       name: bind-utils
+       state: present
+
+   - name: yum-utils
+     yum:
+       name: yum-utils
+       state: present
+   - name: iscsi
+     yum:
+       name: lsscsi
+       state: present
+   
+   - name: open-iscsi
+     yum: 
+       name: iscsi-initiator-utils
+       state: present
+
+   - name: multipath tools
+     yum: 
+       name: device-mapper-multipath
+       state: present

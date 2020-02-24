@@ -1,0 +1,16 @@
+
+- hosts: master
+  become: yes
+  tasks:
+
+    - copy:
+        src: /home/aparsons/ops/files/master_pso.zip
+        dest: /home/aparsons/test/master_pso.zip
+        mode: 0644
+
+    - unarchive:
+        src: /home/aparsons/test/master_pso.zip
+        dest: /home/aparsons/test
+        remote_src: yes
+
+

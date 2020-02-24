@@ -1,0 +1,18 @@
+#
+##
+##     This playbook invokes plays to do the following
+##     BUILD new VMS templates in Vcenter
+##
+##     made by andy parsons 11/15/2018
+##     email aparsons@purestorage.com
+##
+##     
+##     this playbook uses data from clone.csv to populate the build
+##     it also creates a new DNS record for each host.
+##     You can use the present/absent variable to remove the device from both infoblox, and Vcenter
+##
+##
+##
+##########################################################
+ - include: clonevm.yaml #clones vms from template
+ - include: infoadd.yaml #adds hosts records from csv

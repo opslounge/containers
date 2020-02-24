@@ -1,0 +1,23 @@
+- hosts: osnodes
+  become: yes
+  tasks:
+   - name: install lsscsi
+     yum:
+       name: lsscsi
+       state: present
+
+#   - name: install open-iscsi
+ #    yum:
+  #     name: open-iscsi
+   #    state: present
+
+   - name: iscsi-initiator-utils
+     yum:
+       name: iscsi-initiator-utils
+       state: present
+
+   - name: yum update
+     shell: yum update >> yum.txt
+     args:
+       chdir: $HOME
+       creates: yum.txt

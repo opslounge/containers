@@ -1,0 +1,11 @@
+[masters]
+master ansible_host=ec2-54-179-152-61.ap-southeast-1.compute.amazonaws.com ansible_user=ubuntu
+
+[workers]
+worker1 ansible_host=ec2-54-179-152-61.ap-southeast-1.compute.amazonaws.com ansible_user=ubuntu
+worker2 ansible_host=ec2-13-250-32-131.ap-southeast-1.compute.amazonaws.com ansible_user=ubuntu
+
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3
+ansible_user=ubuntu
+ansible_ssh_private_key_file=/home/aparsons/ops/kube-cluster/aparsonsk8.pem

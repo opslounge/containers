@@ -1,0 +1,17 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+    # Referenced in nginx-snapshot.yaml for the volume spec
+    name: redis-master-claim-snap
+    annotations:
+      clone.pvc.beta.purestorage.com/name: redis-master-claim
+spec:
+     accessModes:
+       - ReadWriteOnce
+    # storage size must be exact same as snapshot
+     resources:
+       requests:
+         storage: 2Gi
+     # Matches the name defined in deployment/storageclass.yaml
+     storageClassName: pure-block
+

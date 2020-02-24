@@ -1,0 +1,2 @@
+hname,address,gate,vlan,status,frc,temp,nic
+onode002,10.226.228.225,10.226.224.1,mgmt,poweredon,yes,apcent7template,True

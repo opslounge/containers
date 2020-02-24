@@ -1,0 +1,4 @@
+hname,address,gate,vlan,status,frc,temp,infstate
+k8s-node01,10.226.224.238,10.226.224.1,mgmt,poweredon,yes,apubuntu1604,present
+k8s-node02,10.226.224.237,10.226.224.1,mgmt,poweredon,yes,apubuntu1604,present
+k8s-node03,10.226.224.236,10.226.224.1,mgmt,poweredon,yes,apubuntu1604,present

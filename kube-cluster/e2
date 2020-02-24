@@ -1,0 +1,11 @@
+[masters]
+master ansible_host=10.226.129.38 ansible_user=ubuntu
+
+[workers]
+worker1 ansible_host=10.226.129.25 ansible_user=ubuntu
+worker2 ansible_host=10.226.130.49 ansible_user=ubuntu
+
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3
+ansible_user=ubuntu
+ansible_ssh_private_key_file=/home/aparsons/ops/kube-cluster/pureuser.pem

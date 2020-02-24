@@ -1,0 +1,3 @@
+hname,address,gate,vlan,status,frc,temp,infstate,nic
+ansibledemowin01,10.226.224.234,10.226.224.1,mgmt,poweredon,yes,server2019template,present,True
+ansibledemolin01,10.226.224.233,10.226.224.1,mgmt,poweredon,yes,apcent7template,present,True

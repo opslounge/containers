@@ -1,0 +1,5 @@
+hname,address,gate,vlan,status,frc,temp,nic
+hdp0,10.226.225.97,10.226.224.1,mgmt,poweredon,yes,apcent7template,True
+hdp1,10.226.225.98,10.226.224.1,mgmt,poweredon,yes,apcent7template,True
+hdp2,10.226.225.99,10.226.224.1,mgmt,poweredon,yes,apcent7template,True
+hdp3,10.226.225.100,10.226.224.1,mgmt,poweredon,yes,apcent7template,True

@@ -1,0 +1,17 @@
+#
+#
+#    This Playbook runs the active cluster demo
+#    Details can be found below:
+#    https://wiki.purestorage.com/display/psw/Active+Cluster+with+VMware 
+#
+#    created Nov,11,2019 by Andy Parsons 
+#    please email aparsons@purestorage.com with any issues
+#
+#
+########################################3
+
+
+- include: workload.yaml   #starts the workload generator
+- include: delhg.yaml      #disconnects the hostgroup from the volume 
+- include: addhg.yaml      #reconnects the hostgroup from the volume
+- include: cleanfs.yaml    #cleans the vdbench filesystem

@@ -1,0 +1,13 @@
+---
+- name:
+  hosts: flasharray
+  gather_facts: no
+  connection: local
+  tasks: 
+    - name: Make a snapshot of a vol
+      purefa_snap:
+        name: ansisbledevvol01
+        suffix: andysmagicalsnapshots         
+        fa_url: 10.226.224.110
+        api_token: aa009fd2-7686-7d48-8698-26b7eb2ae841
+        state: present

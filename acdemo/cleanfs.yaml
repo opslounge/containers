@@ -1,0 +1,13 @@
+- hosts: workload
+  sudo: yes
+  remote_user: root
+  tasks:
+
+#   - name: Cleaning file system for next demo
+ #    shell: nohup /root/vdbench/./cleanfs.sh > /dev/null 2>&1 &
+   - pause:
+       prompt: System will now clean the vdbench file system for next usage
+       minutes: 1
+
+   - name: Cleaning file system for next demo
+     shell: nohup /root/vdbench/./cleanfs.sh > /dev/null 2>&1 &

@@ -1,0 +1,11 @@
+
+- hosts: vertica
+  become: yes
+  tasks:
+
+    - copy:
+        src: /home/aparsons/ops/files/ifcfg-ens224
+        dest: /etc/sysconfig/network-scripts/
+        mode: 0644
+
+

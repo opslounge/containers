@@ -1,0 +1,18 @@
+- hosts: master
+  become: yes
+  tasks:
+
+    - name: create .kube directory
+      become: yes
+      become_user: aparsons
+      file:
+        path: $HOME/.kube
+        state: directory
+        mode: 0755
+
+    - name: copy admin.conf to user's kube config
+      copy:
+        src: /etc/kubernetes/admin.conf
+        dest: /home/aparsons/.kube/config
+        remote_src: yes
+        owner: aparsons

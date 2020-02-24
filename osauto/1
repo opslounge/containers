@@ -1,0 +1,50 @@
+- hosts: vertica
+  become: yes
+  tasks:
+   - name: install wget
+     yum:
+       name: wget
+       state: present
+
+   - name: install git
+     yum:
+       name: git
+       state: present
+
+   - name: install nfs-utils
+     yum:
+       name: nfs-utils
+       state: present
+
+   - name: install open-vm-tools
+     yum:
+       name: open-vm-tools
+       state: present
+   - name: 
+     yum: 
+       name: mcelog
+       state: present
+   
+   - name:
+     yum:
+       name: pstack/gstack
+       state: present
+
+   - name:
+     yum:
+       name: iostat
+       state: present
+
+   - name:
+     yum:
+       name: mpstat
+       state: present 
+
+   - name:  restart serviced
+#     shell: service network restart 
+
+
+   - name:  list network service
+ #    shell: ifconfig -s
+
+

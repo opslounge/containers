@@ -1,0 +1,17 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: redis-master-claim-blade
+  annotations:
+    volume.beta.kubernetes.io/storage-class: pure-file
+spec:
+  selector:
+        matchExpressions:
+        - key: "failure-domain.beta.kubernetes.io/zone"
+          operator: In
+          values: ["WEST"]
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi

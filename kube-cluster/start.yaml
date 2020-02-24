@@ -1,0 +1,16 @@
+- name: Start sandbox instances
+  hosts: localhost
+  gather_facts: false
+  vars:
+    instance_ids:
+      - 'i-051e7e4d14fe81317'
+      - 'i-064622df119665e2c'
+      - 'i-08db4a6fcef344a35'
+    region: ap-southeast-1a
+  tasks:
+    - name: Start the sandbox instances
+      ec2:
+        instance_ids: '{{ instance_ids }}'
+        region: '{{ region }}'
+        state: running
+        wait: True

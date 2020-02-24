@@ -1,0 +1,6 @@
+
+
+- include: clonevm.yaml
+- include: keys.yaml
+- include: resolv.yaml
+- include: osprep.yaml

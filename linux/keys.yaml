@@ -1,0 +1,16 @@
+- hosts: compute
+  become: yes
+  tasks:
+    - name: create the 'aparsons' user
+      user: name=aparsons append=yes state=present createhome=yes shell=/bin/bash
+
+    - name: allow 'aparsons' to have passwordless sudo
+      lineinfile:
+        dest: /etc/sudoers
+        line: 'aparsons ALL=(ALL) NOPASSWD: ALL'
+        validate: 'visudo -cf %s'
+
+    - name: set up authorized keys for the aparsons user
+      authorized_key: user=aparsons key="{{item}}"
+      with_file:
+        - ~/.ssh/id_rsa.pub

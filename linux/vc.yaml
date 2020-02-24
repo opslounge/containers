@@ -8,11 +8,11 @@
       args:
         executable: /bin/bash
 
-    - filesystem:
+    - filesystem: 
         fstype: ext2
         dev: /dev/sdb1
     
-    - mount:
+    - mount: 
         fstype: ext2
         src: /dev/sdb1
         path: /demo

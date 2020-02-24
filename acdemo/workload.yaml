@@ -1,0 +1,16 @@
+- hosts: workload
+  sudo: yes
+  remote_user: root
+  tasks:
+
+#  - name: start vdbench workload
+#    shell: /root/vdbench/vdbench/./vdbench -f /root/vdbench/activecluster.vdb
+#    args:
+#      chdir: $HOME
+#      creates: vdbench.txt
+#
+   - name: Execute workload script
+     shell: nohup /root/vdbench/./ac.sh > /dev/null 2>&1 &
+   - pause:
+       prompt: playbook will pause for 60 seconds to let workload start
+       minutes: 1

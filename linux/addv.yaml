@@ -1,0 +1,15 @@
+---
+- name:
+  hosts: flasharray
+  gather_facts: no
+  connection: local
+  tasks: 
+    - name: Make a storage volume with ansible
+      purefa_volume:
+        name: ansisbledevvol01
+        size: 1024g
+        state: present
+        eradicate: no
+        fa_url: 10.226.224.110
+        api_token: aa009fd2-7686-7d48-8698-26b7eb2ae841
+

@@ -7,7 +7,7 @@
         fstype: ext2
         src: /dev/sdb1
         path: /demo
-        state: unmounted
+        state: mounted
 
 
     - name: partition new disk

@@ -1,0 +1,12 @@
+[vcenter_hostname]
+10.226.224.10
+
+[flasharray]
+10.226.224.110
+
+[compute]
+10.226.224.233
+
+[all:vars]
+ansible_user=root
+ansible_ssh_pass=pureuser

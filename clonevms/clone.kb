@@ -1,0 +1,4 @@
+hname,address,gate,vlan,status,frc,temp,infstate,nic
+k8kube01,10.226.224.238,10.226.224.1,mgmt,poweredon,yes,apubuntu1604,present,True
+k8kube02,10.226.224.237,10.226.224.1,mgmt,poweredon,yes,apubuntu1604,present,True
+k8kube03,10.226.224.236,10.226.224.1,mgmt,poweredon,yes,apubuntu1604,present,True

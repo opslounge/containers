@@ -1,0 +1,16 @@
+[reddotac1]
+10.226.224.122
+[reddotac2]
+10.226.224.132
+
+
+[vmware]
+10.226.224.10
+
+
+[workload]
+10.226.225.93
+
+[all:vars]
+ansible_user=root
+ansible_ssh_pass=pureuser

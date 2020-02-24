@@ -1,0 +1,8 @@
+- hosts: osnodes
+#  become: yes
+
+- name: Perform a discovery on 192.168.150.134 and show available target nodes
+  open_iscsi:
+    show_nodes: yes
+    discover: yes
+    portal: 192.168.150.134

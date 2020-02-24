@@ -1,0 +1,10 @@
+- name: Start sandbox instances
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - local_action:
+      module: ec2
+      instance_tags:
+          Name: aws-k8s01
+      state: running
+ 

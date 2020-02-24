@@ -1,0 +1,16 @@
+- name: Start sandbox instances
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    aws_access_key_id:  'AKIAYPSUC6VZPAHOJUXI'
+    aws_secret_key_id: 'Q1GPxG6xJJRc1yVb0lhGPnKEEP2EC3C8kcbtXUrH'
+  tasks:
+   - ec2:
+       region: ap-southeast-1
+       key_name: pureuser.pem
+       aws_access_key: '{{ aws_access_key_id }}'
+       aws_secret_key: '{{ aws_secret_key_id }}'
+       instance_tags: 
+         Name: aws-k8s02
+       state: running

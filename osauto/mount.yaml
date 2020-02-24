@@ -1,0 +1,18 @@
+---
+- hosts: vertica
+  become: yes
+  tasks:
+ 
+ #  - name: Mount and bind a volume
+   #  mount:
+    #  path: /tools
+    #  src:  192.168.170.11:/zz-tools/
+    #  state: mounted
+   #   fstype: nfs
+  
+   - name: quick and dirty nfs mount
+     shell: mount  192.168.170.11:/zz-tools /tools
+
+  # - name: scratch fstab nfs4
+#     mount:  src="192.168.170.11:/zz-tools" name=/tools fstype=nfs opts="vers=3,rw,nodev,intr,intr"  state=mounted
+  

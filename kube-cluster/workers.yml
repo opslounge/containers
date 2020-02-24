@@ -3,7 +3,7 @@
   gather_facts: false
   tasks:
     - name: get join command
-      shell: kubeadm token create --print-join-command
+      shell: sudo kubeadm token create --print-join-command
       register: join_command_raw
 
     - name: set join command
@@ -19,3 +19,9 @@
       args:
         chdir: $HOME
         creates: node_joined.txt
+- name: kubernetes.yml --> Install Flannel
+  shell: kubectl -n kube-system apply -f https://raw.githubusercontent.com/coreos/flannel/bc79dd1505b0c8681ece4de4c0d86c5cd2643275/Documentation/kube-flannel.yml
+  become: yes
+  environment:
+    KUBECONFIG: "/etc/kubernetes/admin.conf"
+  when: inventory_hostname in (groups['masters'] | last)

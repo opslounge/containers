@@ -1,0 +1,73 @@
+- hosts: osnodes
+  become: yes
+  tasks:
+   - name: install wget
+     yum:
+       name: wget
+       state: present
+
+   - name: install git
+     yum:
+       name: git
+       state: present
+
+   - name: net-tools
+     yum:
+       name: net-tools
+       state: present
+
+   - name: bind-utils
+     yum:
+       name: bind-utils
+       state: present
+
+   - name: yum-utils
+     yum:
+       name: yum-utils
+       state: present
+
+   - name: bind-utils
+     yum:
+       name: bind-utils
+       state: present
+
+   - name: yum-utils
+     yum:
+       name: yum-utils
+       state: present
+
+   - name: iptables-services
+     yum:
+       name: iptables-services
+       state: present
+
+   - name: bridge-utils
+     yum:
+       name: bridge-utils
+       state: present
+
+   - name: bash-completion
+     yum:
+       name: bash-completion
+       state: present
+
+   - name: kexec-tools
+     yum:
+       name: kexec-tools
+       state: present
+
+   - name: sos
+     yum:
+       name: sos
+       state: present
+
+   - name: psacct
+     yum:
+       name: psacct
+       state: present
+
+   - name: yum update
+     shell: yum update >> yum.txt
+     args:
+       chdir: $HOME
+       creates: yum.txt

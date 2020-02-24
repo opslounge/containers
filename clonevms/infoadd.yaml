@@ -1,0 +1,21 @@
+---
+ - hosts: infoblox
+   connection: local
+
+
+   tasks: 
+    - include_csv: src=clone.csv
+    - name: configure an ipv4 host record
+      nios_host_record:
+        name: "{{ item.name }}.puretec.purestorage.com"
+        ipv4:
+           - address: "{{ item.address }}"
+        state: present
+        provider:
+          host: 10.21.93.16
+          username: aparsons
+          password: yourpasswordhere
+          wapi_version: 2.5
+        view: INTERNAL
+      connection: local
+      with_items: "{{ clone }}"
