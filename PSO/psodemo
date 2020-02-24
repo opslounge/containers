@@ -1,0 +1,98 @@
+#/bin/bash
+#######################################################################################
+#
+#		CONTAINER DEMO RUNBOOK
+#
+#######################################################################################
+#
+#       Environment
+#
+#   compute: 10.226.224.238 uname:ubuntu/passwd:pureuser
+#   storage: 10.226.224.180/flashblade
+#   storage: 10.226.224.110/flasharray (iscsi)
+#   storage: 10.226.224.132/flasharray (iscsi)
+#
+#######################################################################################
+#
+#Use this playbook to demo PSO
+#This will install PSO on a kubernetes cluster. 
+#The demo environment uses kubernetes 1.14 and includes helm and tiller.  
+#
+#Tasks: 
+#Install PSO from scratch using Helm
+#Create a container with persistant storage 
+#Upgrade the instance of PSO to add a second array. 
+#Upgrade the instance of PSO to include the use of labels
+#Create a container with persistant storage and assign volume to an array using labels.
+#Create a container with persistant storage on flashblade
+#Log into a container and view the attached storage volume. 
+#
+#Created 07-05-2019 by Andrew Parsons
+#
+########################################################################################
+
+
+#We need to initialize helm to get it ready to install PSO
+helm init
+#Next lets add the repo from github
+helm repo add pure https://purestorage.github.io/helm-charts
+#Updates the repo
+helm repo update 
+
+
+#Perform installation of PSO using yaml file defining the array we will connect
+sudo helm install -n pso pure/pure-k8s-plugin -f 1pure.yaml
+
+
+#List the pods that PSO has created you should see a provisioner on the master and flex drivers on each worker node
+kubectl get pods 
+
+
+#Create an app in kubernetes
+kubectl create -f app
+#list the persistant volume claims genereated 
+kubectl get pvc 
+
+
+#Copy the id of the PVC and search the array.   Should be the first array you provisioned "10.226.224.110"
+#you should see the volume attached to your host on the cluster
+
+
+#Upgrade PSO and add a second array
+helm init
+helm repo add pure https://purestorage.github.io/helm-charts
+helm repo update 
+sudo helm upgrade pso pure/pure-k8s-plugin -f 2pure.yaml
+
+
+#Create another app
+kubectl create -f app2
+kubectl get pvc
+
+
+#Upgrade PSO and add a third array to use Labels
+helm init
+helm repo add pure https://purestorage.github.io/helm-charts
+helm repo update 
+sudo helm upgrade pso pure/pure-k8s-plugin -f 3pure.yaml
+
+
+#Lets create another app. THis time we will assign it to an availabiltly zone
+#this is defined in the app. You can brose the app-labels/ folder and view one of the 
+#zone files to see it will deploy in the WEST zone
+kubectl create -f app-labels
+kubcetl get pvc
+
+#note that the volume was deployed on the array with the label "WEST"
+
+#this concludes the demo
+#please run the following commands to clean up the environment
+
+#deletes apps
+kubectl delete -f app
+kubectl delete -f app2
+kubectl delete -f app-labels
+#removes and purges PSO 
+helm delete --purge pso
+
+echo done
